@@ -5,14 +5,10 @@ const Button = ({ text = "Click me" }) => {
 
   useEffect(() => {
     let counter = document.getElementById("counter");
-    counter.innerText = `Ва нажали ${click}`;
+    counter.innerText = `Clicks counter ${click}`;
   });
 
-  return (
-    <button onClick={() => setClick(click + 1)}>
-      {text} {click}
-    </button>
-  );
+  return <button onClick={() => setClick(click + 1)}>{text}</button>;
 };
 
 export default Button;

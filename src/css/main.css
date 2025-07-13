@@ -48,9 +48,10 @@ img {
 }
 
 .header {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  width: 100%;
+}
+
+.user {
+  background-color: #287b7b;
+  padding: 20px 40px;
+  margin: 20px;
 }
