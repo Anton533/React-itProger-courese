@@ -5,7 +5,7 @@ const Button = ({ text = "Click me" }) => {
 
   useEffect(() => {
     let counter = document.getElementById("counter");
-    counter.innerText = `Clicks counter ${click}`;
+    counter.innerText = `${click}`;
   });
 
   return <button onClick={() => setClick(click + 1)}>{text}</button>;

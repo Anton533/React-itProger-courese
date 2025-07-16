@@ -16,7 +16,9 @@ class App extends React.Component {
 
         <img src={reactLogo} alt="React JS logo" />
 
-        <h1 id="counter">React</h1>
+        <h1>
+          Clicks: <span id="counter"></span>
+        </h1>
         <Button />
       </div>
     );
