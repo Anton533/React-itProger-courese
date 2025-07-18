@@ -8,7 +8,11 @@ const Button = ({ text = "Click me" }) => {
     counter.innerText = `${click}`;
   });
 
-  return <button onClick={() => setClick(click + 1)}>{text}</button>;
+  return (
+    <button className="btn" onClick={() => setClick(click + 1)}>
+      {text}
+    </button>
+  );
 };
 
 export default Button;
