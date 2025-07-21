@@ -70,22 +70,32 @@ img {
   background-color: #fff;
 }
 
-.user {
-  background-color: #3f8eaa;
-  border-radius: 5px;
-  padding: 20px 40px;
-  margin: 20px;
-}
-
 .main-wrapper {
   display: flex;
-  gap: 40px;
-  padding: 20px;
+  gap: 60px;
+  padding: 60px;
+}
+
+aside {
+  width: 100%;
 }
 
 .main {
   max-width: 50%;
   margin-inline: auto;
+}
+
+.users {
+  min-width: 300px;
+  text-align: center;
+}
+
+.user-card {
+  text-align: left;
+  background-color: #3f8eaa;
+  border-radius: 5px;
+  padding: 20px 40px;
+  margin-block-end: 20px;
 }
 
 .clicks {
@@ -94,10 +104,17 @@ img {
 
 /* /////////-form-components-////////// */
 .form {
-  width: 50%;
+  border: 1px solid #49d8ff;
+  padding: 25px;
+  border-radius: 5px;
 }
 .form-item {
   margin-block-end: 15px;
+}
+.form-item--checkbox {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
 }
 .form-label {
   margin-block-end: 5px;
@@ -115,11 +132,16 @@ img {
   border: none;
 
   background-color: #fff;
+  color: #242424;
   padding-top: 15px;
   padding-bottom: 15px;
   padding-left: 10px;
   padding-right: 10px;
   width: 100%;
+}
+
+input[type="checkbox"] {
+  margin: 10px;
 }
 .form-input:focus,
 .form-textarea:focus {

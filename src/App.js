@@ -3,8 +3,34 @@ import Header from "./components/Header";
 import reactLogo from "./img/react-logo.png";
 import Button from "./components/Button";
 import Users from "./components/Users";
+import Form from "./components/Form";
 
 class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      users: [
+        {
+          id: 1,
+          firstname: "Андрей",
+          lastname: "Коваленко",
+          email: "andrey.kovalenko@example.com",
+          age: 28,
+          isHappy: true,
+        },
+        {
+          id: 2,
+          firstname: "Марина",
+          lastname: "Сидорова",
+          email: "marina.sidorova@example.com",
+          age: 34,
+          isHappy: true,
+        },
+      ],
+    };
+    this.addUser = this.addUser.bind(this);
+    this.delUser = this.delUser.bind(this);
+  }
   render() {
     return (
       <div className="wrapper">
@@ -13,75 +39,21 @@ class App extends React.Component {
         <img src={reactLogo} alt="React JS logo" />
 
         <div className="main-wrapper">
-          <form class="form">
-            <div class="form-item">
-              <label class="form-label" for="contact-us-full-name">
-                Name
-              </label>
-              <input
-                class="form-input "
-                type="text"
-                id="contact-us-name"
-                name="name"
-                placeholder="name"
-                required="true"
-              />
-            </div>
-
-            <div class="form-item">
-              <label
-                class="form-label form-label--neutral-900"
-                for="contact-us-full-name">
-                Lastname
-              </label>
-              <input
-                class="form-input form-input--accent"
-                type="text"
-                name="lastname"
-                placeholder="lastname"
-                required="true"
-              />
-            </div>
-
-            <div class="form-item">
-              <label
-                class="form-label form-label--neutral-900"
-                for="contact-us-full-name">
-                Email
-              </label>
-              <input
-                class="form-input form-input--accent"
-                type="email"
-                id="contact-us-email"
-                name="email"
-                placeholder="email"
-                required="true"
-              />
-            </div>
-
-            <div class="form-item">
-              <label
-                class="form-label form-label--neutral-900"
-                for="contact-us-full-name">
-                BIO
-              </label>
-              <textarea
-                class="form-textarea form-textarea--accent"
-                name="user-message"
-                id="user-message"
-                placeholder="Type your message here..."
-                rows="6"
-                required="true"></textarea>
-            </div>
-
-            <div class="form-bottom">
-              <button type="button" class="btn w-100">
-                Send
-              </button>
-            </div>
-          </form>
+          <aside>
+            <Form onAdd={this.addUser} />
+          </aside>
           <main className="main">
-            <Users />
+            <Users users={this.state.users} removeUser={this.delUser} />
+            <button
+              type="button"
+              className="btn"
+              onClick={() => {
+                this.setState((prevState) => ({
+                  users: prevState.users.slice(0, -1),
+                }));
+              }}>
+              Del last
+            </button>
           </main>
         </div>
 
@@ -91,6 +63,18 @@ class App extends React.Component {
         <Button />
       </div>
     );
+  }
+
+  addUser(user) {
+    const id = this.state.users.length + 1;
+    this.setState({
+      users: [...this.state.users, { id, ...user }],
+    });
+  }
+  delUser(idToRemove) {
+    this.setState({
+      users: this.state.users.filter((user) => user.id !== idToRemove),
+    });
   }
 }
 
