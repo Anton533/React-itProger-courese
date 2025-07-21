@@ -1,6 +1,7 @@
 import React from "react";
 
 class Form extends React.Component {
+  userAdd = {};
   constructor(props) {
     super(props);
     this.state = {
@@ -15,7 +16,7 @@ class Form extends React.Component {
   }
   render() {
     return (
-      <form className="form">
+      <form className="form" ref={(ele) => (this.formAddUser = ele)}>
         <div className="form-item">
           <label className="form-label" htmlFor="user-name">
             Name
@@ -102,16 +103,21 @@ class Form extends React.Component {
           <button
             type="button"
             className="btn w-100"
-            onClick={() =>
-              this.props.onAdd({
+            onClick={() => {
+              this.userAdd = {
                 firstname: this.state.firstname,
                 lastname: this.state.lastname,
                 email: this.state.email,
                 bio: this.state.bio,
                 age: this.state.age,
                 isHappy: this.state.isHappy,
-              })
-            }>
+              };
+              if (this.props.user) {
+                this.userAdd.id = this.props.user.id;
+              }
+              this.props.onAdd(this.userAdd);
+              this.formAddUser.reset();
+            }}>
             Add
           </button>
         </div>

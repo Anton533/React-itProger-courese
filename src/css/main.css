@@ -97,6 +97,9 @@ aside {
   padding: 20px 40px;
   margin-block-end: 20px;
 }
+.user-card__content {
+  margin-bottom: 20px;
+}
 
 .clicks {
   margin-block-end: 10px;

@@ -30,6 +30,7 @@ class App extends React.Component {
     };
     this.addUser = this.addUser.bind(this);
     this.delUser = this.delUser.bind(this);
+    this.editUser = this.editUser.bind(this);
   }
   render() {
     return (
@@ -43,7 +44,11 @@ class App extends React.Component {
             <Form onAdd={this.addUser} />
           </aside>
           <main className="main">
-            <Users users={this.state.users} removeUser={this.delUser} />
+            <Users
+              users={this.state.users}
+              removeUser={this.delUser}
+              editUser={this.editUser}
+            />
             <button
               type="button"
               className="btn"
@@ -75,6 +80,18 @@ class App extends React.Component {
     this.setState({
       users: this.state.users.filter((user) => user.id !== idToRemove),
     });
+  }
+  editUser(user) {
+    let allUsers = this.state.users;
+    allUsers[user.id - 1] = user;
+    this.setState(
+      {
+        users: [],
+      },
+      () => {
+        this.setState({ users: [...allUsers] });
+      }
+    );
   }
 }
 
