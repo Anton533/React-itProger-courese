@@ -51,12 +51,6 @@ h1 {
   transition: color 0.3s ease-in-out;
 }
 
-img {
-  max-width: 420px;
-  max-height: 120px;
-  padding: 20px;
-}
-
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -85,6 +79,11 @@ aside {
   margin-inline: auto;
 }
 
+.raact__logo {
+  width: 320px;
+  padding: 10px;
+}
+
 .users {
   min-width: 300px;
   text-align: center;
@@ -96,6 +95,10 @@ aside {
   border-radius: 5px;
   padding: 20px 40px;
   margin-block-end: 20px;
+}
+.user-card__avatar {
+  width: 220px;
+  padding-block: 10px;
 }
 .user-card__content {
   margin-bottom: 20px;
@@ -171,6 +174,10 @@ input[type="checkbox"] {
   line-height: inherit;
 
   resize: none;
+}
+
+.form-bottom {
+  margin-block-start: 30px;
 }
 /* /////////////// */
 .btn {

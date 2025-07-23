@@ -1,4 +1,5 @@
 import React from "react";
+import userAvatar from "../img/user-avatr.png";
 
 class Form extends React.Component {
   userAdd = {};
@@ -6,12 +7,10 @@ class Form extends React.Component {
     super(props);
     this.state = {
       id: 1,
-      firstname: "",
-      lastname: "",
+      first_name: "",
+      last_name: "",
       email: "",
-      bio: "",
-      age: 1,
-      isHappy: false,
+      avatar: "",
     };
   }
   render() {
@@ -28,7 +27,7 @@ class Form extends React.Component {
             name="user-name"
             placeholder="name"
             required
-            onChange={(e) => this.setState({ firstname: e.target.value })}
+            onChange={(e) => this.setState({ first_name: e.target.value })}
           />
         </div>
         <div className="form-item">
@@ -42,7 +41,7 @@ class Form extends React.Component {
             name="user-lastname"
             placeholder="lastname"
             required
-            onChange={(e) => this.setState({ lastname: e.target.value })}
+            onChange={(e) => this.setState({ last_name: e.target.value })}
           />
         </div>
         <div className="form-item">
@@ -59,58 +58,31 @@ class Form extends React.Component {
             onChange={(e) => this.setState({ email: e.target.value })}
           />
         </div>
+
         <div className="form-item">
-          <label className="form-label" htmlFor="user-age">
-            Age
+          <label className="form-label" htmlFor="user-avatar">
+            Avatar
           </label>
           <input
             className="form-input"
-            type="email"
-            id="user-age"
-            name="user-age"
-            placeholder="Age"
+            type="text"
+            id="user-avatar"
+            name="user-avatar"
+            placeholder="avatar"
             required
-            onChange={(e) => this.setState({ age: e.target.value })}
+            onChange={(e) => this.setState({ email: e.target.value })}
           />
         </div>
-        <div className="form-item">
-          <label className="form-label" htmlFor="user-bio">
-            BIO
-          </label>
-          <textarea
-            className="form-textarea"
-            id="user-bio"
-            name="user-bio"
-            placeholder="Your bio..."
-            rows="6"
-            required
-            onChange={(e) => this.setState({ bio: e.target.value })}></textarea>
-        </div>
-        <div className="form-item form-item--checkbox">
-          <label className="form-label" htmlFor="user-happy">
-            Are you happy?
-          </label>
-          <input
-            className="form-input"
-            type="checkbox"
-            id="user-happy"
-            name="user-happy"
-            required
-            onChange={(e) => this.setState({ isHappy: e.target.checked })}
-          />
-        </div>
+
         <div className="form-bottom">
           <button
             type="button"
             className="btn w-100"
             onClick={() => {
               this.userAdd = {
-                firstname: this.state.firstname,
-                lastname: this.state.lastname,
+                first_name: this.state.first_name,
+                last_name: this.state.last_name,
                 email: this.state.email,
-                bio: this.state.bio,
-                age: this.state.age,
-                isHappy: this.state.isHappy,
               };
               if (this.props.user) {
                 this.userAdd.id = this.props.user.id;

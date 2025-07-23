@@ -4,29 +4,27 @@ import reactLogo from "./img/react-logo.png";
 import Button from "./components/Button";
 import Users from "./components/Users";
 import Form from "./components/Form";
+import axios from "axios";
+
+const baseUrl = "https://reqres.in/api/users/";
 
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    axios
+      .get(baseUrl, {
+        headers: {
+          "x-api-key": "reqres-free-v1",
+        },
+      })
+      .then((res) => {
+        console.log(res.data.data);
+        this.setState({ users: res.data.data });
+      });
+
     this.state = {
-      users: [
-        {
-          id: 1,
-          firstname: "Андрей",
-          lastname: "Коваленко",
-          email: "andrey.kovalenko@example.com",
-          age: 28,
-          isHappy: true,
-        },
-        {
-          id: 2,
-          firstname: "Марина",
-          lastname: "Сидорова",
-          email: "marina.sidorova@example.com",
-          age: 34,
-          isHappy: true,
-        },
-      ],
+      users: [],
     };
     this.addUser = this.addUser.bind(this);
     this.delUser = this.delUser.bind(this);
@@ -37,7 +35,7 @@ class App extends React.Component {
       <div className="wrapper">
         <Header title="Header" />
 
-        <img src={reactLogo} alt="React JS logo" />
+        <img src={reactLogo} className="raact__logo" alt="React JS logo" />
 
         <div className="main-wrapper">
           <aside>

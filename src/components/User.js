@@ -29,30 +29,15 @@ class User extends React.Component {
           />
         </div>
         <div className="user-card__content">
-          <p>
-            {"Name: "}
-            {this.user.firstname}
-          </p>
-          <span>
-            {"Lastname: "}
-            {this.user.lastname}
-          </span>
-          <p>
-            {"Email: "}
-            {this.user.email}
-          </p>
-          <p>
-            {"BIO: "}
-            {this.user.bio}
-          </p>
-          <b>
-            {"Age: "}
-            {this.user.age}
-          </b>
-          <p>
-            {"Is happy: "}
-            {this.user.isHappy ? "Happy :)" : "No :("}
-          </p>
+          <p>{this.user.id}</p>
+          <img
+            src={this.user.avatar}
+            className="user-card__avatar"
+            alt="User avatar"></img>
+          <h3>
+            {this.user.first_name} {this.user.last_name}
+          </h3>
+          <p>{this.user.email}</p>
         </div>
 
         {this.state.editForm && (
